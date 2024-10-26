@@ -1,10 +1,16 @@
 from datetime import datetime, timedelta
-from usuario import *
+from models.usuario import *
 
 class Book:
     def __init__ (self, titulo, autor, ano, id_livro):
-        self.titulo = titulo; self.autor = autor; self.id_livro = id_livro; self.ano = ano
-        self.disponivel = True; self.user = None; self.data_emprestimo = None 
+        self.titulo = titulo
+        self.autor = autor
+        self.id_livro = id_livro
+        self.ano = ano
+        self.disponivel = True
+        self.user = None
+        self.data_emprestimo = None 
+        self.data_devolucao = None # Achei interessante ter esse atributo para colocar na tabela.
         # inicialmente no sistema o livro nao foi emprestado (sem user), nao apresentando data de emprestimo (ele vai ganhando um historico de data de emprestimos)
 
     # user == instancia da class User_Student -> precisa de uma garantia melhor d/que vem da User_Student
