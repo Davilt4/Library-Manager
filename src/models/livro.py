@@ -1,6 +1,9 @@
 from datetime import datetime, timedelta
 from models.usuario import *
+'''
+para consertar irei me apegar ao cpf do usuario, de toda forma havera uma tabela com nome - cpf etc e o programa reconhecera o nome de quem pegou o livro -> vou fazer a ativ de protocolos e ja arrumo.
 
+'''
 class Book:
     def __init__ (self, titulo, autor, ano, id_livro):
         self.titulo = titulo
