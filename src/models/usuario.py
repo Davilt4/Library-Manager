@@ -1,3 +1,4 @@
+# user id = cpf -> ate poderia ser um id gerado, mas por agora fica mais simples com o proprio user cpf
 class User_Student:
     def __init__(self, nome, id_usuario, credito_emprestimo = 60):
         self.nome = nome

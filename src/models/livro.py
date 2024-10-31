@@ -1,9 +1,6 @@
 from datetime import datetime, timedelta
-from models.usuario import *
-'''
-para consertar irei me apegar ao cpf do usuario, de toda forma havera uma tabela com nome - cpf etc e o programa reconhecera o nome de quem pegou o livro -> vou fazer a ativ de protocolos e ja arrumo.
+from models.usuario import User_Student
 
-'''
 class Book:
     def __init__ (self, titulo, autor, ano, id_livro):
         self.titulo = titulo
@@ -14,10 +11,12 @@ class Book:
         self.user = None
         self.data_emprestimo = None 
         self.data_devolucao = None # Achei interessante ter esse atributo para colocar na tabela.
-        # inicialmente no sistema o livro nao foi emprestado (sem user), nao apresentando data de emprestimo (ele vai ganhando um historico de data de emprestimos)
+        # inicialmente no sistema o livro nao foi emprestado (sem user), nao apresentando data de emprestimo (ele vai ganhando um historico de data de emprestimos)        
 
-    # user == instancia da class User_Student -> precisa de uma garantia melhor d/que vem da User_Student
     def emprestado(self, user, data_emprestimo): 
+        if not isinstance(user, User_Student) or not hasattr(user, "id_usuario"):
+            raise TypeError("O parâmetro 'user' deve ser uma instância de User_Student com o atributo 'id_usuario'.")
+        self.user_id = user.id_usuario
         self.user = user 
         if not self.disponivel:
             print("ERROR: Livro já emprestado.")
