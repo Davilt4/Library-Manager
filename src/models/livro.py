@@ -19,7 +19,7 @@ class Book:
         if not self.disponivel:
             print("ERROR: Livro já emprestado.")
             return # impossibilita emprestimo se ja estiver emprestado
-        self.data_emprestimo = datetime.strptime(data_emprestimo, "%d/%m/%Y");
+        self.data_emprestimo = datetime.strptime(data_emprestimo, "%d/%m/%Y")
         self.disponivel = False; # livro emprestado
 
     def devolvido(self, data_devolucao):
