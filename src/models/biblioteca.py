@@ -14,7 +14,7 @@ class Library:
         if not isinstance(instance_user_id, User_Student) or not hasattr(instance_user_id, "user_id"):
             raise TypeError("O parâmetro 'user' deve ser uma instância de User_Student com o atributo 'user_id'.")
 
-                        #(a)    (b)
+                        #       (a)    (b)
         self.user_id = instance_user_id.user_id # o 'user_id' dentro do objeto User_Student é copiado para a Library -> preciso estudar isso melhor
 #         (a)  objeto de User_Student (parâmetro do método).
 #         (b) atributo user_id dentro dessa instância de User_Student, que contém o ID real do usuário (como uma string ou outro identificador).
@@ -27,11 +27,17 @@ class Library:
         try:
             self.data_emprestimo = datetime.strptime(data_emprestimo, "%d/%m/%Y") 
             # se as datas n estiverem no formato que deveriam
-        #   ------------------------------------------------------> GERAR CODIGO DO EMPRESTIMO AQUI
+
+            
         except ValueError:
             raise ValueError("Data de empréstimo deve estar no formato dd/mm/yyyy.")
 
+        def uuid_emprestimo():
+            self.codigo_emprestimo = str(uuid.uuid4())
+            return self.codigo_emprestimo
+        
         self.disponivel = False; # livro emprestado
+        uuid_emprestimo()
 
 
     def devolvido(self, data_devolucao, user_id):
